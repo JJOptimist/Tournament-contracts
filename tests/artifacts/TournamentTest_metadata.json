@@ -1,0 +1,97 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "afterAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "afterEach",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "beforeAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "beforeEach",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testTournamentFlow",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/TournamentMatch_test.sol": "TournamentTest"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Tournament.sol": {
+			"keccak256": "0x529e4acc61fb356daee356aeee41ac2429ddf4dbe2faaebfd1e9f43421b73565",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6b1e85fc9e1fca7dff5bb61a70e2639c3b59783f732cc6487fec1dd93aa5f569",
+				"dweb:/ipfs/QmNxXD1yDpY9pUp1RwbEmVVQ4vY5xFd48fDpCBEwGPQJc1"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/TournamentMatch_test.sol": {
+			"keccak256": "0x74efd10abb0f569319a82f2cf8736e6ba746f532d2f5efd76b83fcd723600ab4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0c14fbcd0ddea9670733e033db2034a18be3ce7dfd527daeedfbf92dc3fb9366",
+				"dweb:/ipfs/QmYzSHPxXYBs9mpAi9DkBr1mgVLTyMjY4HUngmXEA4vQJk"
+			]
+		}
+	},
+	"version": 1
+}
