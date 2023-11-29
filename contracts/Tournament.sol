@@ -97,18 +97,25 @@ contract Tournament {
         TournamentInfo storage tournament = tournaments[_tournamentId];
         require(_matchIndex < tournament.matches.length, "Invalid match index");
         require(tournament.matches[_matchIndex].status == MatchStatus.Pending, "Match already completed");
-        require(_winner == tournament.matches[_matchIndex].team1 || _winner == tournament.matches[_matchIndex].team2, "Invalid winner");
+    
+    // Allow the same team to win multiple matches
+    // require(_winner == tournament.matches[_matchIndex].team1 || _winner == tournament.matches[_matchIndex].team2, "Invalid winner");
 
         tournament.matches[_matchIndex].winner = _winner;
         tournament.matches[_matchIndex].status = MatchStatus.Completed;
 
         emit MatchCompleted(_tournamentId, _matchIndex, _winner);
-    }
+}
+
+    event DebugRewardDistribution(uint256 indexed tournamentId, uint256 numMatches, uint256 numTeams);
+
 
    // Function to distribute rewards to the winning teams in a tournament
     function distributeRewards(uint256 _tournamentId) external onlyOwner tournamentExists(_tournamentId) {
         TournamentInfo storage tournament = tournaments[_tournamentId];
+        emit DebugRewardDistribution(_tournamentId, tournament.matches.length, tournament.teams.length);
         require(tournament.matches.length == tournament.teams.length - 1, "Tournament not finished");
+        
 
     // Calculate rewards for each place
         uint256 firstPlaceReward = (rewardPool * 50) / 100;

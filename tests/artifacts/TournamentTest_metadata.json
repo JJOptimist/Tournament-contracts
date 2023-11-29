@@ -7,20 +7,6 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "afterAll",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "afterEach",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "beforeAll",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -69,11 +55,11 @@
 	},
 	"sources": {
 		"contracts/Tournament.sol": {
-			"keccak256": "0x529e4acc61fb356daee356aeee41ac2429ddf4dbe2faaebfd1e9f43421b73565",
+			"keccak256": "0xebad37be6f875191dcb1c507dbfcdca03b767a555ec1776986462be80394952a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6b1e85fc9e1fca7dff5bb61a70e2639c3b59783f732cc6487fec1dd93aa5f569",
-				"dweb:/ipfs/QmNxXD1yDpY9pUp1RwbEmVVQ4vY5xFd48fDpCBEwGPQJc1"
+				"bzz-raw://ef565125d92049921dd901667be3291eb80a3b0b020dc5e57bce0cd7b681690a",
+				"dweb:/ipfs/QmXcAwSCqT63zd3QJPW7f3PJWzo65vgboVCxLw1xgesQcJ"
 			]
 		},
 		"remix_tests.sol": {
@@ -85,11 +71,11 @@
 			]
 		},
 		"tests/TournamentMatch_test.sol": {
-			"keccak256": "0x74efd10abb0f569319a82f2cf8736e6ba746f532d2f5efd76b83fcd723600ab4",
+			"keccak256": "0x48bb1ff968e808b22fba39df84d26280581825c22a42139fb10095308762eed0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0c14fbcd0ddea9670733e033db2034a18be3ce7dfd527daeedfbf92dc3fb9366",
-				"dweb:/ipfs/QmYzSHPxXYBs9mpAi9DkBr1mgVLTyMjY4HUngmXEA4vQJk"
+				"bzz-raw://ffe90ba311684ef9878741705a11de08f11639c57dafc44e28b87b7e5165d662",
+				"dweb:/ipfs/QmYNb5aqRYWzF91pEeCUFzMP6jq6oy94yoMCmRvBooC8kd"
 			]
 		}
 	},
