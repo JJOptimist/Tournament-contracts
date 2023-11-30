@@ -55,11 +55,11 @@
 	},
 	"sources": {
 		"contracts/Tournament.sol": {
-			"keccak256": "0xebad37be6f875191dcb1c507dbfcdca03b767a555ec1776986462be80394952a",
+			"keccak256": "0x014decae560e66fe45e92cf8b6090f0a1b6bc22ffe0b63276de667db0727819b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ef565125d92049921dd901667be3291eb80a3b0b020dc5e57bce0cd7b681690a",
-				"dweb:/ipfs/QmXcAwSCqT63zd3QJPW7f3PJWzo65vgboVCxLw1xgesQcJ"
+				"bzz-raw://c8a4f29bf7e748e5a4c0cbf565c59f9cf05685dedbc119144f692c40bb2225c8",
+				"dweb:/ipfs/Qmd2u1hga2HfDQQUEfCdzG7Kr2JSfm5GX47bjpDtK7LZeK"
 			]
 		},
 		"remix_tests.sol": {
@@ -71,11 +71,11 @@
 			]
 		},
 		"tests/TournamentMatch_test.sol": {
-			"keccak256": "0x48bb1ff968e808b22fba39df84d26280581825c22a42139fb10095308762eed0",
+			"keccak256": "0x88e485a725893235775c53e0365556c977587b88a8d736a9bb2bf20a0b9c378f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ffe90ba311684ef9878741705a11de08f11639c57dafc44e28b87b7e5165d662",
-				"dweb:/ipfs/QmYNb5aqRYWzF91pEeCUFzMP6jq6oy94yoMCmRvBooC8kd"
+				"bzz-raw://afb0b9bc16f0df61aa792cffdc9b3d5e8612f8d55f9e6d733d5cf13289706efd",
+				"dweb:/ipfs/QmV6g6R7RnRm4jQT3rBUVQYXzVkav7z5Bq2bFPZrPQfLkH"
 			]
 		}
 	},

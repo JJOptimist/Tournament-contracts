@@ -51,7 +51,7 @@ contract Tournament {
         require(tournaments[_tournamentId].matches.length == 0, "Tournament has already started");
         _;
     }
-
+    uint256 public currentMatchIndex;
     // Constructor to set the contract owner
     constructor() {
         owner = msg.sender;
@@ -78,19 +78,27 @@ contract Tournament {
     }
 
     // Function to start a tournament by generating initial matches
-    function startTournament(uint256 _tournamentId) external onlyOwner tournamentExists(_tournamentId) {
-        TournamentInfo storage tournament = tournaments[_tournamentId];
-        uint256 numTeams = tournament.teams.length;
+   function startTournament(uint256 _tournamentId) external onlyOwner tournamentExists(_tournamentId) {
+    TournamentInfo storage tournament = tournaments[_tournamentId];
+    uint256 numTeams = tournament.teams.length;
 
-        for (uint256 i = 0; i < numTeams / 2; i++) {
-            tournament.matches.push(Match({
-                team1: tournament.teams[i * 2],
-                team2: tournament.teams[i * 2 + 1],
-                winner: address(0),
-                status: MatchStatus.Pending
-            }));
-        }
+    require(numTeams % 2 == 0, "Number of teams must be even");
+
+    // Check if the tournament has already started
+    require(tournament.matches.length < numTeams - 1, "Tournament has already started");
+
+    for (uint256 i = 0; i < numTeams / 2; i++) {
+        tournament.matches.push(Match({
+            team1: tournament.teams[i * 2],
+            team2: tournament.teams[i * 2 + 1],
+            winner: address(0),
+            status: MatchStatus.Pending
+        }));
     }
+
+    // Set the current match index to 0 when starting the tournament
+    currentMatchIndex = 0;
+}
 
     // Function to complete a match in a tournament and declare a winner
     function completeMatch(uint256 _tournamentId, uint256 _matchIndex, address _winner) external onlyOwner tournamentExists(_tournamentId) {
@@ -113,7 +121,6 @@ contract Tournament {
    // Function to distribute rewards to the winning teams in a tournament
     function distributeRewards(uint256 _tournamentId) external onlyOwner tournamentExists(_tournamentId) {
         TournamentInfo storage tournament = tournaments[_tournamentId];
-        emit DebugRewardDistribution(_tournamentId, tournament.matches.length, tournament.teams.length);
         require(tournament.matches.length == tournament.teams.length - 1, "Tournament not finished");
         
 

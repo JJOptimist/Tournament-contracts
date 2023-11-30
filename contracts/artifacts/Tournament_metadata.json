@@ -121,6 +121,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "currentMatchIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -261,11 +274,11 @@
 	},
 	"sources": {
 		"contracts/Tournament.sol": {
-			"keccak256": "0xe228815f00f0c2b7a2bce23db97ee5d4507648d2b5944ca638f25a4e77fc3128",
+			"keccak256": "0x02488153af8bedee60b66b3ef5cea1ced01cb22ac978b1240ad8690e13fca0d3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://90f9c265154c15b3ad57a917f417c4e02cdb684a4fd379b23bd64270bfea4475",
-				"dweb:/ipfs/QmcXgaQELopvDTtmNs4zWdbfP1xvJSmecR5JEXo4QtP14q"
+				"bzz-raw://6598a6836e666de6f9f1d3c0239771d61a2fba726b83407f8b3da6b582bec1a4",
+				"dweb:/ipfs/QmWqDttJ7meb7cWesrA4thuDygYi4BUShaShM6D1Bv3Mjk"
 			]
 		}
 	},

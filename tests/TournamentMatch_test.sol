@@ -33,28 +33,34 @@ contract TournamentTest {
 
         // Start tournament
         tournament.startTournament(1);
-        Assert.equal(tournament.getTournamentMatches(1).length, 4, "Number of matches in the tournament should be 4");
+        Assert.equal(tournament.getTournamentMatches(1).length, 7, "Number of matches in the tournament should be 7");
 
         // Complete matches and check winners
-        tournament.completeMatch(1, 0, 0x79457d3C630b1D095A7ECcB993232D395ebFc54d);
-        tournament.completeMatch(1, 1, 0x388C818CA8B9251b393131C08a736A67ccB19297);
-        tournament.completeMatch(1, 2, 0xcDBF58a9A9b54a2C43800c50C7192946dE858321);
-        tournament.completeMatch(1, 3, 0x79457d3C630b1D095A7ECcB993232D395ebFc54d);
+        tournament.completeMatch(1, 0, teams[0]);
+        tournament.completeMatch(1, 1, teams[2]);
+        tournament.completeMatch(1, 2, teams[4]);
+        tournament.completeMatch(1, 3, teams[6]);
+        tournament.completeMatch(1, 4, teams[0]);
+        tournament.completeMatch(1, 5, teams[4]);
+        tournament.completeMatch(1, 6, teams[0]);
 
         // Check winners
-        Assert.equal(tournament.getTournamentMatches(1)[0].winner, 0x79457d3C630b1D095A7ECcB993232D395ebFc54d, "Team2 should win the first match");
-        Assert.equal(tournament.getTournamentMatches(1)[1].winner, 0x388C818CA8B9251b393131C08a736A67ccB19297, "Team4 should win the second match");
-        Assert.equal(tournament.getTournamentMatches(1)[2].winner, 0xcDBF58a9A9b54a2C43800c50C7192946dE858321, "Team5 should win the third match");
-        Assert.equal(tournament.getTournamentMatches(1)[3].winner, 0x79457d3C630b1D095A7ECcB993232D395ebFc54d, "Team2 should win the finals");
+        Assert.equal(tournament.getTournamentMatches(1)[0].winner, teams[0], "Team0 should win the first match");
+        Assert.equal(tournament.getTournamentMatches(1)[1].winner, teams[2], "Team2 should win the second match");
+        Assert.equal(tournament.getTournamentMatches(1)[2].winner, teams[4], "Team4 should win the third match");
+        Assert.equal(tournament.getTournamentMatches(1)[3].winner, teams[6], "Team6 should win the fourth match");
+        Assert.equal(tournament.getTournamentMatches(1)[4].winner, teams[0], "Team0 should win the fifth match");
+        Assert.equal(tournament.getTournamentMatches(1)[5].winner, teams[4], "Team4 should win the sixth match");
+        Assert.equal(tournament.getTournamentMatches(1)[6].winner, teams[0], "Team0 should win the seventh match");
 
         // Distribute rewards
         tournament.distributeRewards(1);
 
         // Check balances
         Assert.equal(address(0).balance, 0, "Balance of address(0) should be 0");
-        Assert.equal(0x79457d3C630b1D095A7ECcB993232D395ebFc54d.balance, 5 ether, "Team2 should receive 50% reward");
-        Assert.equal(0xcDBF58a9A9b54a2C43800c50C7192946dE858321.balance, 3 ether, "Team5 should receive 30% reward");
-        Assert.equal(0x388C818CA8B9251b393131C08a736A67ccB19297.balance, 1 ether, "Team4 should receive 10% reward");
-        Assert.equal(0xd4E96eF8eee8678dBFf4d535E033Ed1a4F7605b7.balance, 1 ether, "Team7 should receive 10% reward");
+        Assert.equal(teams[0].balance, 5 ether, "Team0 should receive 50% reward");
+        Assert.equal(teams[4].balance, 3 ether, "Team4 should receive 30% reward");
+        Assert.equal(teams[2].balance, 1 ether, "Team4 should receive 10% reward");
+        Assert.equal(teams[6].balance, 1 ether, "Team7 should receive 10% reward");
     }
 }
