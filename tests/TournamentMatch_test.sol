@@ -9,23 +9,20 @@ contract TournamentTest {
 
     function beforeAll() public {
         tournament = new Tournament();
+       
     }
 
-    function beforeEach() public {
-        
-    }
-
+    
     function testTournamentFlow() public {
         address[] memory teams = new address[](8);
-        teams[0] = 0xb3D9cf8E163bbc840195a97E81F8A34E295B8f39;
-        teams[1] = 0x79457d3C630b1D095A7ECcB993232D395ebFc54d;
-        teams[2] = 0xE086D858c555AfAe2Da9E86c067794Ba2046C339;
-        teams[3] = 0x388C818CA8B9251b393131C08a736A67ccB19297;
-        teams[4] = 0xcDBF58a9A9b54a2C43800c50C7192946dE858321;
-        teams[5] = 0x21BEB3DE554042b3E626D7b1a7bf0Af7921bfd5f;
-        teams[6] = 0xd4E96eF8eee8678dBFf4d535E033Ed1a4F7605b7;
-        teams[7] = 0xe688b84b23f322a994A53dbF8E15FA82CDB71127;
-
+        teams[0] = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
+        teams[1] = 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db;
+        teams[2] = 0x17F6AD8Ef982297579C203069C1DbfFE4348c372;
+        teams[3] = 0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB;
+        teams[4] = 0x617F2E2fD72FD9D5503197092aC168c91465E7f2;
+        teams[5] = 0x17F6AD8Ef982297579C203069C1DbfFE4348c372;
+        teams[6] = 0x03C6FcED478cBbC9a4FAB34eF9f40767739D1Ff7;
+        teams[7] = 0x1aE0EA34a72D944a8C7603FfB3eC30a6669E454C;
 
          // Create tournament
         tournament.createTournament(1, teams);
@@ -33,7 +30,8 @@ contract TournamentTest {
 
         // Start tournament
         tournament.startTournament(1);
-        Assert.equal(tournament.getTournamentMatches(1).length, 7, "Number of matches in the tournament should be 7");
+ 
+       
 
         // Complete matches and check winners
         tournament.completeMatch(1, 0, teams[0]);
@@ -43,6 +41,8 @@ contract TournamentTest {
         tournament.completeMatch(1, 4, teams[0]);
         tournament.completeMatch(1, 5, teams[4]);
         tournament.completeMatch(1, 6, teams[0]);
+
+        Assert.equal(tournament.getTournamentMatches(1).length, 7, "Number of matches in the tournament should be 7");
 
         // Check winners
         Assert.equal(tournament.getTournamentMatches(1)[0].winner, teams[0], "Team0 should win the first match");
@@ -58,9 +58,9 @@ contract TournamentTest {
 
         // Check balances
         Assert.equal(address(0).balance, 0, "Balance of address(0) should be 0");
-        Assert.equal(teams[0].balance, 5 ether, "Team0 should receive 50% reward");
-        Assert.equal(teams[4].balance, 3 ether, "Team4 should receive 30% reward");
-        Assert.equal(teams[2].balance, 1 ether, "Team4 should receive 10% reward");
-        Assert.equal(teams[6].balance, 1 ether, "Team7 should receive 10% reward");
+        Assert.equal(payable(teams[0]).balance, 5 ether, "Team0 should receive 50% reward");
+        Assert.equal(payable(teams[4]).balance, 3 ether, "Team4 should receive 30% reward");
+        Assert.equal(payable(teams[2]).balance, 1 ether, "Team2 should receive 10% reward");
+        Assert.equal(payable(teams[6]).balance, 1 ether, "Team6 should receive 10% reward");
     }
 }

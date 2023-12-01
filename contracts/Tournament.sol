@@ -21,9 +21,11 @@ contract Tournament {
 
     // Structure to represent tournament information
     struct TournamentInfo {
-        Match[] matches;
         address[] teams;
-    }
+        Match[] matches;
+        address[] secondRoundTeams;
+        address[] finalRoundTeams;
+}
 
     // Mapping to store tournament information for each tournament ID
     mapping(uint256 => TournamentInfo) private tournaments;
@@ -79,41 +81,54 @@ contract Tournament {
 
     // Function to start a tournament by generating initial matches
    function startTournament(uint256 _tournamentId) external onlyOwner tournamentExists(_tournamentId) {
-    TournamentInfo storage tournament = tournaments[_tournamentId];
-    uint256 numTeams = tournament.teams.length;
+        TournamentInfo storage tournament = tournaments[_tournamentId];
+        uint256 numTeams = tournament.teams.length;
 
-    require(numTeams % 2 == 0, "Number of teams must be even");
+        require(numTeams % 2 == 0, "Number of teams must be even");
 
     // Check if the tournament has already started
-    require(tournament.matches.length < numTeams - 1, "Tournament has already started");
+        require(tournament.matches.length < numTeams - 1, "Tournament has already started");
 
-    for (uint256 i = 0; i < numTeams / 2; i++) {
-        tournament.matches.push(Match({
-            team1: tournament.teams[i * 2],
-            team2: tournament.teams[i * 2 + 1],
-            winner: address(0),
-            status: MatchStatus.Pending
-        }));
-    }
+        for (uint256 i = 0; i < numTeams / 2; i++) {
+            tournament.matches.push(Match({
+                team1: tournament.teams[i * 2],
+                team2: tournament.teams[i * 2 + 1],
+                winner: address(0),
+                status: MatchStatus.Pending
+            }));
+        }
 
     // Set the current match index to 0 when starting the tournament
-    currentMatchIndex = 0;
-}
+        currentMatchIndex = 0;
+        }
 
     // Function to complete a match in a tournament and declare a winner
-    function completeMatch(uint256 _tournamentId, uint256 _matchIndex, address _winner) external onlyOwner tournamentExists(_tournamentId) {
+    // Function to complete a match in a tournament and declare a winner
+    function completeMatch(uint256 _tournamentId, uint256 _matchIndex, address _winner) public {
         TournamentInfo storage tournament = tournaments[_tournamentId];
-        require(_matchIndex < tournament.matches.length, "Invalid match index");
-        require(tournament.matches[_matchIndex].status == MatchStatus.Pending, "Match already completed");
-    
-    // Allow the same team to win multiple matches
-    // require(_winner == tournament.matches[_matchIndex].team1 || _winner == tournament.matches[_matchIndex].team2, "Invalid winner");
+        Match storage matchInstance = tournament.matches[_matchIndex];
+        matchInstance.winner = _winner;
+        matchInstance.status = MatchStatus.Completed;
 
-        tournament.matches[_matchIndex].winner = _winner;
-        tournament.matches[_matchIndex].status = MatchStatus.Completed;
+        if (_matchIndex < tournament.teams.length / 2) {
+            tournament.secondRoundTeams.push(_winner);
+     }  else if (_matchIndex < tournament.teams.length / 2 + tournament.secondRoundTeams.length / 2) {
+            tournament.finalRoundTeams.push(_winner);
+        }
 
-        emit MatchCompleted(_tournamentId, _matchIndex, _winner);
-}
+    // If the match being completed is the last match of the current round, create matches for the next round
+        if (_matchIndex == tournament.teams.length / 2 - 1 || _matchIndex == tournament.teams.length / 2 + tournament.secondRoundTeams.length / 2 - 1) {
+         address[] storage winners = _matchIndex == tournament.teams.length / 2 - 1 ? tournament.secondRoundTeams : tournament.finalRoundTeams;
+            for (uint256 i = 0; i < winners.length / 2; i++) {
+                tournament.matches.push(Match({
+                    team1: winners[i * 2],
+                    team2: winners[i * 2 + 1],
+                    winner: address(0),
+                    status: MatchStatus.Pending
+                }));
+            }
+        }
+    }
 
     event DebugRewardDistribution(uint256 indexed tournamentId, uint256 numMatches, uint256 numTeams);
 
@@ -129,6 +144,7 @@ contract Tournament {
         uint256 secondPlaceReward = (rewardPool * 30) / 100;
         uint256 thirdPlaceReward = (rewardPool * 10) / 100;
         uint256 fourthPlaceReward = (rewardPool * 10) / 100;
+        
 
     // Distribute rewards to each team
         payable(tournament.matches[tournament.matches.length - 1].winner).transfer(firstPlaceReward);
@@ -136,5 +152,8 @@ contract Tournament {
         payable(tournament.matches[tournament.matches.length - 3].winner).transfer(thirdPlaceReward);
         payable(tournament.matches[tournament.matches.length - 4].winner).transfer(fourthPlaceReward);
     }
-
+    
+    function deposit() external payable {
+    rewardPool += msg.value;
+    }
 }

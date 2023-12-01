@@ -134,6 +134,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -274,11 +281,11 @@
 	},
 	"sources": {
 		"contracts/Tournament.sol": {
-			"keccak256": "0x02488153af8bedee60b66b3ef5cea1ced01cb22ac978b1240ad8690e13fca0d3",
+			"keccak256": "0xa2698893804aae9c52a092dd384110fc539cd4ebbe7617ef9f2567ba1d316bf3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6598a6836e666de6f9f1d3c0239771d61a2fba726b83407f8b3da6b582bec1a4",
-				"dweb:/ipfs/QmWqDttJ7meb7cWesrA4thuDygYi4BUShaShM6D1Bv3Mjk"
+				"bzz-raw://6121635b191caf38066cc62509e7c44f2b4d01e506d6eb19f0157f29a7b7852b",
+				"dweb:/ipfs/Qmd6oo6QRsrwvd4jLGY3BF8CAhvcduRynYNTCjp8kCHgt1"
 			]
 		}
 	},

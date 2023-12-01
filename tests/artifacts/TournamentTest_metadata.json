@@ -14,13 +14,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "beforeEach",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "testTournamentFlow",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -55,11 +48,11 @@
 	},
 	"sources": {
 		"contracts/Tournament.sol": {
-			"keccak256": "0x014decae560e66fe45e92cf8b6090f0a1b6bc22ffe0b63276de667db0727819b",
+			"keccak256": "0xa2698893804aae9c52a092dd384110fc539cd4ebbe7617ef9f2567ba1d316bf3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c8a4f29bf7e748e5a4c0cbf565c59f9cf05685dedbc119144f692c40bb2225c8",
-				"dweb:/ipfs/Qmd2u1hga2HfDQQUEfCdzG7Kr2JSfm5GX47bjpDtK7LZeK"
+				"bzz-raw://6121635b191caf38066cc62509e7c44f2b4d01e506d6eb19f0157f29a7b7852b",
+				"dweb:/ipfs/Qmd6oo6QRsrwvd4jLGY3BF8CAhvcduRynYNTCjp8kCHgt1"
 			]
 		},
 		"remix_tests.sol": {
@@ -71,11 +64,11 @@
 			]
 		},
 		"tests/TournamentMatch_test.sol": {
-			"keccak256": "0x88e485a725893235775c53e0365556c977587b88a8d736a9bb2bf20a0b9c378f",
+			"keccak256": "0xac8b5e7706c1ddee30b3e952fbc4e135fa557ec62d39129d35f6eb94dc06ff38",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://afb0b9bc16f0df61aa792cffdc9b3d5e8612f8d55f9e6d733d5cf13289706efd",
-				"dweb:/ipfs/QmV6g6R7RnRm4jQT3rBUVQYXzVkav7z5Bq2bFPZrPQfLkH"
+				"bzz-raw://cf40df3037601dcad98b5bad07e4e8b4a99c64fe2704bd71ef3dc6c40414a19f",
+				"dweb:/ipfs/Qmaj2dwZNsUBXTzZ44U2DKG2QcnnsoCzk41bWWvUMqH2AL"
 			]
 		}
 	},
