@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "hardhat/console.sol";
 
 contract Tournament {
     // Contract owner
@@ -117,6 +118,8 @@ contract Tournament {
         
 
     // Calculate rewards for each place
+        console.log("Deez nuts");
+        console.log(rewardPool);
         uint256 firstPlaceReward = (rewardPool * 50) / 100;
         uint256 secondPlaceReward = (rewardPool * 30) / 100;
         uint256 thirdPlaceReward = (rewardPool * 10) / 100;

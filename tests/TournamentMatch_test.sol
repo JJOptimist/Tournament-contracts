@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "remix_tests.sol"; 
+import "hardhat/console.sol";
 import "../contracts/Tournament.sol"; 
 
 contract TournamentTest {
@@ -54,7 +55,13 @@ contract TournamentTest {
         Assert.equal(tournament.getTournamentMatches(1)[6].winner, teams[0], "Team0 should win the seventh match");
 
         // Distribute rewards
+        tournament.deposit();
         tournament.distributeRewards(1);
+        console.log(payable(teams[0]).balance);
+        console.log(payable(teams[4]).balance);
+        console.log(payable(teams[2]).balance);
+
+        // Assert.equal(payable(teams[0]).balance >= 101 ether, true, "Nije vece od 99 eth-a");
 
         // Check balances
         Assert.equal(address(0).balance, 0, "Balance of address(0) should be 0");

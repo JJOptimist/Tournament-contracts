@@ -281,11 +281,19 @@
 	},
 	"sources": {
 		"contracts/Tournament.sol": {
-			"keccak256": "0xa2698893804aae9c52a092dd384110fc539cd4ebbe7617ef9f2567ba1d316bf3",
+			"keccak256": "0x88f6a66acd7a516b5dd43dd89a3dcce67995efffb7af9a8615f9b496769c73f8",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6121635b191caf38066cc62509e7c44f2b4d01e506d6eb19f0157f29a7b7852b",
-				"dweb:/ipfs/Qmd6oo6QRsrwvd4jLGY3BF8CAhvcduRynYNTCjp8kCHgt1"
+				"bzz-raw://94dbf73aa579ca8ac46fb1ca1cdf7058c843197ad7143c57be3e2859aae5ec0a",
+				"dweb:/ipfs/Qmct1rdLTuhXGsPS7EBwqwyafMD8jZmW3w569AbCxSnxvm"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395",
+				"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4"
 			]
 		}
 	},

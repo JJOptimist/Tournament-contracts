@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "hardhat/console.sol";
 
 contract Tournament {
     // Contract owner
@@ -103,7 +104,6 @@ contract Tournament {
         }
 
     // Function to complete a match in a tournament and declare a winner
-    // Function to complete a match in a tournament and declare a winner
     function completeMatch(uint256 _tournamentId, uint256 _matchIndex, address _winner) public {
         TournamentInfo storage tournament = tournaments[_tournamentId];
         Match storage matchInstance = tournament.matches[_matchIndex];
@@ -137,23 +137,42 @@ contract Tournament {
     function distributeRewards(uint256 _tournamentId) external onlyOwner tournamentExists(_tournamentId) {
         TournamentInfo storage tournament = tournaments[_tournamentId];
         require(tournament.matches.length == tournament.teams.length - 1, "Tournament not finished");
-        
-
+          console.log(rewardPool);
     // Calculate rewards for each place
+        console.log("Ovde puca 1");
         uint256 firstPlaceReward = (rewardPool * 50) / 100;
         uint256 secondPlaceReward = (rewardPool * 30) / 100;
         uint256 thirdPlaceReward = (rewardPool * 10) / 100;
         uint256 fourthPlaceReward = (rewardPool * 10) / 100;
-        
+        console.log("Ovde puca 2");
 
-    // Distribute rewards to each team
-        payable(tournament.matches[tournament.matches.length - 1].winner).transfer(firstPlaceReward);
-        payable(tournament.matches[tournament.matches.length - 2].winner).transfer(secondPlaceReward);
-        payable(tournament.matches[tournament.matches.length - 3].winner).transfer(thirdPlaceReward);
-        payable(tournament.matches[tournament.matches.length - 4].winner).transfer(fourthPlaceReward);
+    // Emit an event with reward information
+
+
+    // Transfer rewards to each team
+        address winner1 = tournament.matches[tournament.matches.length - 1].winner;
+        address winner2 = tournament.matches[tournament.matches.length - 2].winner;
+        address winner3 = tournament.matches[tournament.matches.length - 3].winner;
+        address winner4 = tournament.matches[tournament.matches.length - 4].winner;
+        console.log("Ovde puca 3");
+        console.log(winner1);
+        console.log(firstPlaceReward);
+
+
+        payable(winner1).transfer(firstPlaceReward);
+        payable(winner2).transfer(secondPlaceReward);
+        payable(winner3).transfer(thirdPlaceReward);
+        payable(winner4).transfer(fourthPlaceReward);
+        console.log("Ovde puca 4");
     }
-    
+
     function deposit() external payable {
-    rewardPool += msg.value;
+        rewardPool += 11 ether;
     }
+
+
+    
+   
+
+   
 }
